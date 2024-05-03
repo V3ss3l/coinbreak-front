@@ -1,0 +1,73 @@
+<div class="grid_generator">
+  <h1>Генерация seed фраз</h1>
+    <div class="generator_10">
+      <mat-card style="padding: 10px">
+        <mat-card-title>Seed фраза из 10 слов</mat-card-title>
+        <mat-card-content>
+          <mat-form-field style="width: 100%; height: auto">
+            <input [(ngModel)]="seed_10" type="text" matInput readonly placeholder="Здесь будет изображена фраза из 10 слов" size="">
+            <button *ngIf="seed_10 !== ''" matSuffix mat-icon-button (click)="copyToClipBoard(seed_10)">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions style="display: inline-grid;
+          grid-gap: 10px; grid-column: 2; grid-row: 1;">
+          <mat-form-field>
+            <mat-label>Язык слов в фразе</mat-label>
+            <mat-select [(value)]="choosedLanguage.name">
+              <mat-option *ngFor="let language of languages" [value]="language.name">{{language.viewName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button (click)="generateSeed(choosedLanguage.name, 10)">Generate</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="generator_12">
+      <mat-card style="padding: 10px">
+        <mat-card-title>Seed фраза из 12 слов</mat-card-title>
+        <mat-card-content>
+          <mat-form-field style="width: 100%; height: auto">
+            <input [(ngModel)]="seed_12" type="text" matInput readonly placeholder="Здесь будет изображена фраза из 12 слов" size="">
+            <button *ngIf="seed_12 !== ''" matSuffix mat-icon-button (click)="copyToClipBoard(seed_12)">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions style="display: inline-grid;
+          grid-gap: 10px; grid-column: 2; grid-row: 1;">
+          <mat-form-field>
+            <mat-label>Язык слов в фразе</mat-label>
+            <mat-select [(value)]="choosedLanguage.name">
+              <mat-option *ngFor="let language of languages" [value]="language.name">{{language.viewName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button (click)="generateSeed(choosedLanguage.name, 12)">Generate</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="generator_18">
+      <mat-card style="padding: 10px">
+        <mat-card-title>Seed фраза из 18 слов</mat-card-title>
+        <mat-card-content>
+          <mat-form-field style="width: 100%; height: auto">
+            <input [(ngModel)]="seed_18" type="text" matInput readonly placeholder="Здесь будет изображена фраза из 18 слов">
+            <button *ngIf="seed_18 !== ''" matSuffix mat-icon-button (click)="copyToClipBoard(seed_18)">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions style="display: inline-grid;
+          grid-gap: 10px; grid-column: 2; grid-row: 1;">
+          <mat-form-field>
+            <mat-label>Язык слов в фразе</mat-label>
+            <mat-select [(value)]="choosedLanguage.name">
+              <mat-option *ngFor="let language of languages" [value]="language.name">{{language.viewName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button (click)="generateSeed(choosedLanguage.name, 18)">Generate</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+.generator_10{
+  width: 1000px;
+  height: 300px;
+}
+
+.generator_12{
+  width: 1000px;
+  height: 300px;
+}
+
+.generator_18{
+  width: 1000px;
+  height: 300px;
+}
+
+.grid_generator{
+  display: grid;
+  grid-column: 1;
+  grid-row: 4;
+  grid-row-gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
