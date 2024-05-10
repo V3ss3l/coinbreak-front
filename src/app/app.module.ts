@@ -22,33 +22,39 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { BalanceComponent } from './balance/balance.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
     AppComponent,
-    SeedGenerationComponent
+    SeedGenerationComponent,
+    BalanceComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTabsModule,
-    MatSidenavModule,
-    MatMenuModule,
-    RouterModule,
-    AppRoutingModule,
-    MatCardModule,
-    MatInputModule,
-    MatGridListModule,
-    MatExpansionModule,
-    ClipboardModule,
-    MatRippleModule,
-    MatSelectModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTabsModule,
+        MatSidenavModule,
+        MatMenuModule,
+        RouterModule,
+        AppRoutingModule,
+        MatCardModule,
+        MatInputModule,
+        MatGridListModule,
+        MatExpansionModule,
+        ClipboardModule,
+        MatRippleModule,
+        MatSelectModule,
+        FormsModule,
+        MatToolbarModule
+    ],
   providers: [WalletApiService, MatSnackBar],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

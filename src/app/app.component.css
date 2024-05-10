@@ -1,0 +1,20 @@
+.topnav_content{
+  display: flex;
+  column-gap: 15px;
+}
+.toolbar{
+  grid-area: a;
+}
+
+.web_name{
+  font-family: 'Lucida', monospace;
+  font-size: 18px;
+  color: #4682B4;
+  border: black;
+}
+
+.menu_item{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}

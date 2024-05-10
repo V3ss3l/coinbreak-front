@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import {Clipboard} from '@angular/cdk/clipboard';
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {SeedLanguage} from "./SeedLanguage";
+import {SeedLanguage} from "../models/SeedLanguage";
 import {WalletApiService} from "../wallet-api.service";
-import { Buffer } from "buffer";
+import {CryptoService} from "../crypto.service";
+import {enc} from "crypto-js";
+import {ResponseInfo} from "../models/ResponseInfo";
 
 @Component({
   selector: 'app-seed-generation',
@@ -25,7 +27,8 @@ export class SeedGenerationComponent {
 
   constructor(private clipboard: Clipboard,
               private _snackBar: MatSnackBar,
-              private _service: WalletApiService) {
+              private _service: WalletApiService,
+              private _crypto: CryptoService) {
   }
   changeSeed = () => {
     this.seed_18 = "world hello or yes"
@@ -50,17 +53,23 @@ export class SeedGenerationComponent {
     console.log(language);
     console.log(size);
     this._service.generateSeed(language, size).subscribe({next: (data:any) => {
-      switch (size){
-        case 10:
-          this.seed_10 = data.seed;
-          break;
-        case 12:
-          this.seed_12 = data.seed;
-          break;
-        case 18:
-          this.seed_18 = data.seed;
-          break;
-      }
+        let seed = this._crypto.decrypt(data.data.seed).toString(enc.Utf8);
+        switch (size) {
+          case 10:
+            this.seed_10 = seed;
+            break;
+          case 12:
+            this.seed_12 = seed;
+            break;
+          case 18:
+            this.seed_18 = seed;
+            break;
+        }
+        this.openSnackBar(data.info, 'OK')
+        if(data.stackTrace !== null){
+          const string = `Error - ${data.httpCode} - ${data.stackTrace}`;
+          console.error(string);
+        }
     }})
   }
 }

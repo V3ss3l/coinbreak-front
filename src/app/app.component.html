@@ -1,26 +1,32 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer class="example-sidenav" mode="side" style="height: 100%">
-    <button mat-fab routerLink="seed-generation">
+<mat-toolbar class="toolbar">
+  <div class="topnav_content">
+    <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <button mat-fab>
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-drawer>
-
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <a style="
-      font-family: AppleGothic;
-      font-size: 18px;
-      color: #4682B4;
-      border: black;"
-    >C0inBreak</a>
+    <mat-menu #menu="matMenu" id="web_menu">
+      <div mat-menu-item class="menu_item">
+        <button mat-raised-button routerLink="seed-generation" style="width: 100%">
+          Генерация seed фразы
+        </button>
+      </div>
+      <div mat-menu-item class="menu_item">
+        <button mat-raised-button routerLink="balance" style="width: 100%">
+          Баланс
+        </button>
+      </div>
+    </mat-menu>
+    <a routerLink="">
+      <img src="assets/images/broken-coin-minimal-icon.png" width="30px" height="30px">
+    </a>
+    <p class="web_name">C0inBreak</p>
   </div>
-</mat-drawer-container>
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-raised-button>Подключить кошелек</button>
+</mat-toolbar>
 
-<router-outlet></router-outlet>
+<router-outlet style="grid-area: b"></router-outlet>
+
+
+
 
 
