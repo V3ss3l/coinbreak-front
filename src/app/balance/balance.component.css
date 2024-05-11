@@ -1,0 +1,6 @@
+.balance_page{
+  display: grid;
+  grid-auto-rows: 300px;
+  align-items: center;
+  justify-items: center;
+}

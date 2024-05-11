@@ -53,7 +53,7 @@ export class SeedGenerationComponent {
     console.log(language);
     console.log(size);
     this._service.generateSeed(language, size).subscribe({next: (data:any) => {
-        let seed = this._crypto.decrypt(data.data.seed).toString(enc.Utf8);
+        let seed = this._crypto.decrypt(data.data.seed);
         switch (size) {
           case 10:
             this.seed_10 = seed;
