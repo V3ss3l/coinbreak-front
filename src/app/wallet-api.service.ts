@@ -19,6 +19,13 @@ export class WalletApiService {
     return this.http.post<Object>(uri, params);
   }
 
+  generateWallet(password: string): Observable<Object>{
+    const uri = `http://localhost:8080/wallet/generate/seed`;
+    let params = new HttpParams()
+      .set('password', password)
+    return this.http.post<Object>(uri, params);
+  }
+
   getBalanceByCurrency(currency: string): Observable<Object>{
     const uri = `http://localhost:8080/wallet/balance/currency/${currency}`;
     return this.http.get<Object>(uri);

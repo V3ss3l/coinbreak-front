@@ -1,0 +1,23 @@
+.pass_step{
+  display: flex;
+  width: 500px;
+}
+
+.check_seed_step{
+  display: grid;
+  grid-template-columns: repeat(6, 250px);
+  grid-template-rows: repeat(6, 100px);
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+  align-items: center;
+  justify-items: center;
+}
+
+.seed_word_button{
+  width: 200px;
+  border-radius: 5px;
+}
+
+.seed_word_button::after{
+  background: aquamarine;
+}

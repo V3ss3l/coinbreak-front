@@ -30,9 +30,6 @@ export class SeedGenerationComponent {
               private _service: WalletApiService,
               private _crypto: CryptoService) {
   }
-  changeSeed = () => {
-    this.seed_18 = "world hello or yes"
-  }
 
   copyToClipBoard(text:string){
     this.clipboard.copy(text);

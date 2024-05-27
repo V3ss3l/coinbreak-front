@@ -5,13 +5,21 @@
     </button>
     <mat-menu #menu="matMenu" id="web_menu">
       <div mat-menu-item class="menu_item">
-        <button mat-raised-button routerLink="seed-generation" style="width: 100%">
+        <button mat-raised-button routerLink="seed-generation" style="display: block;
+    width: 100%;">
           Генерация seed фразы
         </button>
       </div>
       <div mat-menu-item class="menu_item">
-        <button mat-raised-button routerLink="balance" style="width: 100%">
+        <button mat-raised-button routerLink="balance" style="display: block;
+    width: 100%;">
           Баланс
+        </button>
+      </div>
+      <div mat-menu-item class="menu_item">
+        <button mat-raised-button routerLink="wallet-generation" style="display: block;
+    width: 100%;">
+          Генерация кошелька
         </button>
       </div>
     </mat-menu>
@@ -21,7 +29,7 @@
     <p class="web_name">C0inBreak</p>
   </div>
   <span style="flex: 1 1 auto;"></span>
-  <button mat-raised-button>Подключить кошелек</button>
+  <button mat-raised-button style="border-radius: 5px">Подключить кошелек</button>
 </mat-toolbar>
 
 <router-outlet style="grid-area: b"></router-outlet>

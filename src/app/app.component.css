@@ -3,7 +3,13 @@
   column-gap: 15px;
 }
 .toolbar{
+  background: white;
+  margin-left: 15px;
+  width: 98%;
   grid-area: a;
+  border-radius: 15px;
+  align-items: center;
+  justify-items: center;
 }
 
 .web_name{
@@ -15,6 +21,8 @@
 
 .menu_item{
   display: flex;
-  align-items: center;
   justify-items: center;
+  align-items: center;
+  justify-content: center;
 }
+

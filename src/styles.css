@@ -2,9 +2,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: rgb(241,250,191);
-  background: -moz-radial-gradient(circle, rgba(241,250,191,1) 0%, rgba(70,224,172,1) 25%, rgba(0,212,255,1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(241,250,191,1) 0%, rgba(70,224,172,1) 25%, rgba(0,212,255,1) 100%);
-  background: radial-gradient(circle, rgba(241,250,191,1) 0%, rgba(70,224,172,1) 25%, rgba(0,212,255,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f1fabf",endColorstr="#00d4ff",GradientType=1);
+  background: rgb(245,247,225);
+  background: -moz-radial-gradient(circle, rgba(245,247,225,1) 0%, rgba(255,231,192,1) 50%, rgba(247,222,222,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(245,247,225,1) 0%, rgba(255,231,192,1) 50%, rgba(247,222,222,1) 100%);
+  background: radial-gradient(circle, rgba(245,247,225,1) 0%, rgba(255,231,192,1) 50%, rgba(247,222,222,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5f7e1",endColorstr="#f7dede",GradientType=1);
 }

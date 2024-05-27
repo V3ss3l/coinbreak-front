@@ -24,34 +24,42 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { BalanceComponent } from './balance/balance.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatListModule} from "@angular/material/list";
+import { WalletGenerationComponent } from './wallet-generation/wallet-generation.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
     AppComponent,
     SeedGenerationComponent,
-    BalanceComponent
+    BalanceComponent,
+    WalletGenerationComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTabsModule,
-        MatSidenavModule,
-        MatMenuModule,
-        RouterModule,
-        AppRoutingModule,
-        MatCardModule,
-        MatInputModule,
-        MatGridListModule,
-        MatExpansionModule,
-        ClipboardModule,
-        MatRippleModule,
-        MatSelectModule,
-        FormsModule,
-        MatToolbarModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatMenuModule,
+    RouterModule,
+    AppRoutingModule,
+    MatCardModule,
+    MatInputModule,
+    MatGridListModule,
+    MatExpansionModule,
+    ClipboardModule,
+    MatRippleModule,
+    MatSelectModule,
+    FormsModule,
+    MatToolbarModule,
+    MatListModule,
+    MatStepperModule,
+    MatButtonToggleModule
+  ],
   providers: [WalletApiService, MatSnackBar],
   bootstrap: [AppComponent]
 })

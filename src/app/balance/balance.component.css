@@ -1,6 +1,15 @@
 .balance_page{
   display: grid;
-  grid-auto-rows: 300px;
+  grid-template-columns: repeat(2, 250px);
+  grid-auto-rows: fit-content(100%);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
   align-items: center;
   justify-items: center;
 }
+
+.currency_card{
+  border-radius: 5px;
+  padding: 5px;
+}
+
