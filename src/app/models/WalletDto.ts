@@ -1,12 +1,12 @@
 export class WalletDto{
-  private _id: number;
-  private _publicKey: string;
-  private _seed: string;
+  _id: number;
+  _public_key: string;
+  _seed: string;
 
 
   constructor(id?: number, publicKey?: string, seed?: string) {
     this._id = id ?? 0;
-    this._publicKey = publicKey ?? '';
+    this._public_key = publicKey ?? '';
     this._seed = seed ?? '';
   }
 
@@ -15,19 +15,11 @@ export class WalletDto{
     return this._id;
   }
 
-  get publicKey(): string {
-    return this._publicKey;
-  }
-
-  set publicKey(value: string) {
-    this._publicKey = value;
+  get public_key(): string {
+    return this._public_key;
   }
 
   get seed(): string {
     return this._seed;
-  }
-
-  set seed(value: string) {
-    this._seed = value;
   }
 }

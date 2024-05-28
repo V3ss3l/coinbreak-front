@@ -1,11 +1,11 @@
-import {Component, ElementRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {WalletApiService} from "../wallet-api.service";
 import {CryptoService} from "../crypto.service";
 import {WalletDto} from "../models/WalletDto";
 import {SeedLanguage} from "../models/SeedLanguage";
 import {Clipboard} from "@angular/cdk/clipboard";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatButton} from "@angular/material/button";
+import {WalletAuthService} from "../wallet-auth.service";
 
 
 @Component({
@@ -14,12 +14,12 @@ import {MatButton} from "@angular/material/button";
   styleUrls: ['./wallet-generation.component.css']
 })
 export class WalletGenerationComponent {
-  test: any;
   seed: string = "";
   choosedLanguage: SeedLanguage = new SeedLanguage();
   choosedSize: number = 0;
-  choosedWord: number[] = [];
+  choosedWordNumber: number = 0;
   choosedPassword: string = "";
+  checkSeed: boolean = false;
   languages: SeedLanguage[] = [
     new SeedLanguage("english", "Английский"),
     new SeedLanguage("czech", "Чешский"),
@@ -32,19 +32,27 @@ export class WalletGenerationComponent {
               private _snackBar: MatSnackBar,
               private _service: WalletApiService,
               private _crypto: CryptoService,
-              private elementRef:ElementRef) {
+              private _walletAuthService: WalletAuthService) {
   }
 
   ngOnInit() {
   }
 
 
-  generateWallet(password: string){
-    let encrypted = this._crypto.encrypt(password);
-    this._service.generateWallet(encrypted).subscribe({next: (data:any) => {
-
-      let jsonString = this._crypto.decrypt(data.data);
-      let result: WalletDto = JSON.parse(jsonString);
+  generateWallet(){
+    let encryptedPassword = this._crypto.encrypt(this.choosedPassword);
+    let encryptedSeed = this._crypto.encrypt(this.seed);
+    this._service.generateWallet(encryptedPassword, encryptedSeed).subscribe({next: (data) => {
+        this.openSnackBar(data.info, "Ок");
+        if(data.stackTrace !== ""){
+            const string = `Error - ${data.httpCode} - ${data.stackTrace}`;
+            console.error(string);
+            return;
+        }
+        let jsonString = this._crypto.decrypt(data.data.value);
+        let result: WalletDto = JSON.parse(jsonString);
+        this._walletAuthService.wallet = result.public_key;
+        this._walletAuthService.isLoggedIn = true;
       }
     })
   }
@@ -65,22 +73,18 @@ export class WalletGenerationComponent {
       this.openSnackBar("Выберите язык фразы", "Повторить");
       return;
     }
+    this.choosedWordNumber = 0;
     console.log(language);
     console.log(size);
-    this._service.generateSeed(language, size).subscribe({next: (data:any) => {
-        let seedResult = this._crypto.decrypt(data.data.seed);
-        this.seed = seedResult;
-        this.openSnackBar(data.info, 'OK')
-        if(data.stackTrace !== null){
+    this._service.generateSeed(language, size).subscribe({next: (data) => {
+        this.openSnackBar(data.info, "Ок");
+        if(data.stackTrace !== ""){
           const string = `Error - ${data.httpCode} - ${data.stackTrace}`;
           console.error(string);
+          return;
         }
-        while(this.choosedWord.length > 0){
-          this.choosedWord.pop();
-        }
-        while(this.choosedWord.length <= 2){
-          this.choosedWord.push(this.getRandomIntInclusive(1, size));
-        }
+        this.seed = this._crypto.decrypt(data.data.seed);
+        this.choosedWordNumber = this.getRandomIntInclusive(1, size);
       }})
   }
 
@@ -90,14 +94,16 @@ export class WalletGenerationComponent {
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
   }
 
-  setButtonForWord(event: any, word: string){
-    var target = event.target;
-    console.log(target);
-    var idAttr = target.attributes.id;
-    console.log(idAttr);
-    var value = idAttr.nodeValue;
-  }
-
-  checkSeedPhrase(){
+  checkSeedPhrase(wordFromUser: string){
+    let phrase = this.seed.split(" ");
+    for (let i = 0; i < phrase.length; i++){
+      if(i+1 === this.choosedWordNumber && phrase[i] === wordFromUser){
+        this.checkSeed = true;
+        this._snackBar.open("Вы успешно прошли проверку мнемонической фразы", "Oк");
+        return;
+      }
+    }
+    this._snackBar.open("Вы не прошли проверку", "Повторить");
+    this.checkSeed = false;
   }
 }

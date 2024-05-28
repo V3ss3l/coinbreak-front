@@ -22,19 +22,22 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { BalanceComponent } from './balance/balance.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 import { WalletGenerationComponent } from './wallet-generation/wallet-generation.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { WalletConnectComponent } from './wallet-connect/wallet-connect.component';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     SeedGenerationComponent,
-    BalanceComponent,
-    WalletGenerationComponent
+    PortfolioComponent,
+    WalletGenerationComponent,
+    WalletConnectComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +61,10 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     MatToolbarModule,
     MatListModule,
     MatStepperModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
   ],
-  providers: [WalletApiService, MatSnackBar],
+  providers: [WalletApiService, MatSnackBar, MatDialogModule, MatDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule {

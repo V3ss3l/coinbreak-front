@@ -1,12 +1,11 @@
-<div style="padding: 10px; display: inline-grid; align-items: center;
-  justify-items: center;">
+<div class="name_container">
   <p>Создание BIP39 кошелька для EVM сетей</p>
 </div>
 <mat-stepper orientation="horizontal" [linear]="true" #stepper style="background: none">
   <mat-step label="Ввод пароля" state="password">
     <mat-form-field class="pass_step">
       <mat-label>Придумайте пароль для кошелька</mat-label>
-      <input #pass matInput required type="password" [value]="choosedPassword" [minLength]="7">
+      <input #pass matInput required type="password" [(ngModel)]="choosedPassword" [minLength]="7">
     </mat-form-field>
     <mat-form-field class="pass_step">
       <mat-label>Подтвердите пароль</mat-label>
@@ -15,7 +14,7 @@
     <div>
       <button *ngIf="checkPass.value === pass.value && checkPass.value !== '' && pass.value !== ''"
               mat-button matStepperNext>
-        Next
+        Следующий шаг
       </button>
     </div>
   </mat-step>
@@ -52,29 +51,31 @@
       </mat-card>
     </div>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button *ngIf="seed.length !== 0" mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Предыдущий шаг</button>
+      <button *ngIf="seed.length !== 0" mat-button matStepperNext>Следующий шаг</button>
     </div>
   </mat-step>
   <mat-step label="Проверка фразы">
     <div *ngIf="seed !== ''" class="check_seed_step">
-      <p>Выберите {{choosedWord[0]}} и {{choosedWord[1]}} слова</p>
-      <div id="button_div" *ngFor="let word of seed.split(' '); index as i">
-          <mat-button-toggle class="seed_word_button" [value]="word">{{word}}</mat-button-toggle>
+      <p>Выберите {{choosedWordNumber}} слово</p>
+      <div class="button_div" *ngFor="let word of seed.split(' '); index as i">
+          <mat-button-toggle class="seed_word_button" (click)="checkSeedPhrase(word)">{{word}}</mat-button-toggle>
       </div>
     </div>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button *ngIf="choosedWord.length !== 0" mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Предыдущий шаг</button>
+      <button *ngIf="checkSeed" mat-button matStepperNext (click)="generateWallet()">Следующий шаг</button>
     </div>
   </mat-step>
   <mat-step label="Финиш">
-    <p>Кошелек был успешно сгенерирован</p>
+    <div class="name_container" style="font-size: 18px">
+      <p>Кошелек был успешно сгенерирован</p>
+    </div>
   </mat-step>
 
   <!-- Icon overrides. -->
   <ng-template matStepperIcon="password">
-    <mat-icon> vpn_key</mat-icon>
+    <mat-icon>vpn_key</mat-icon>
   </ng-template>
   <ng-template matStepperIcon="mnemonic">
     <mat-icon>subtitles</mat-icon>

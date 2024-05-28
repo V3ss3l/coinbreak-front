@@ -21,3 +21,15 @@
 .seed_word_button::after{
   background: aquamarine;
 }
+
+.name_container {
+  padding: 10px; max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 24px;
+}
+
+.button_div {
+
+}
+

@@ -3,7 +3,7 @@
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu" id="web_menu">
+    <mat-menu #menu="matMenu" class="web_menu">
       <div mat-menu-item class="menu_item">
         <button mat-raised-button routerLink="seed-generation" style="display: block;
     width: 100%;">
@@ -11,15 +11,15 @@
         </button>
       </div>
       <div mat-menu-item class="menu_item">
-        <button mat-raised-button routerLink="balance" style="display: block;
-    width: 100%;">
-          Баланс
-        </button>
-      </div>
-      <div mat-menu-item class="menu_item">
         <button mat-raised-button routerLink="wallet-generation" style="display: block;
     width: 100%;">
           Генерация кошелька
+        </button>
+      </div>
+      <div mat-menu-item class="menu_item">
+        <button mat-raised-button routerLink="portfolio" style="display: block;
+    width: 100%;">
+          Портфолио
         </button>
       </div>
     </mat-menu>
@@ -29,7 +29,38 @@
     <p class="web_name">C0inBreak</p>
   </div>
   <span style="flex: 1 1 auto;"></span>
-  <button mat-raised-button style="border-radius: 5px">Подключить кошелек</button>
+  <div *ngIf="!isLoggedIn else loggedIn">
+    <button mat-raised-button style="border-radius: 5px" (click)="openDialogWallet()">Подключить кошелек</button>
+  </div>
+  <ng-template #loggedIn>
+    <button mat-raised-button [matMenuTriggerFor]="walletMenu" style="border-radius: 5px">Кошелек: {{wallet}}</button>
+    <mat-menu #walletMenu="matMenu" class="web_menu">
+      <div mat-menu-item class="menu_item">
+        <button mat-raised-button style="display: block;
+    width: 100%;">
+          Депозит
+        </button>
+      </div>
+      <div mat-menu-item class="menu_item">
+        <button mat-raised-button style="display: block;
+    width: 100%;">
+          Перевод
+        </button>
+      </div>
+      <div mat-menu-item class="menu_item">
+        <button mat-raised-button style="display: block;
+    width: 100%;">
+          Обмен
+        </button>
+      </div>
+      <div mat-menu-item class="menu_item">
+        <button mat-raised-button style="display: block;
+    width: 100%;">
+          Мост
+        </button>
+      </div>
+    </mat-menu>
+  </ng-template>
 </mat-toolbar>
 
 <router-outlet style="grid-area: b"></router-outlet>

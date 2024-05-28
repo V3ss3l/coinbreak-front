@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Вход в кошелек</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Введите пароль</mat-label>
+    <input matInput [(ngModel)]="password" required type="password">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="connectWallet()" cdkFocusInitial>Подключить</button>
+  <button mat-button mat-dialog-close>Закрыть</button>
+</div>

@@ -1,0 +1,24 @@
+<div class="balance_web_name">
+  <p>Просмотр портфолио кошелька</p>
+</div>
+<div class="wallet_finder">
+  <mat-form-field>
+    <mat-label>Введите адрес кошелька</mat-label>
+    <input matInput [(ngModel)] = "walletAddress">
+  </mat-form-field>
+  <button mat-raised-button (click)="findBalance()">Подтвердить</button>
+</div>
+<div class="balance_page" *ngIf="balanceResult.length > 0">
+  <div *ngFor="let balance of balanceResult; index as i">
+    <mat-card class="currency_card">
+      <mat-card-title>
+        Название валюты - {{balanceResult[i].currency.name}}
+      </mat-card-title>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>{{balanceResult[i].wallet}} - {{balanceResult[i].amount}} {{balanceResult[i].currency.symbol}}</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
