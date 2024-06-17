@@ -15,11 +15,11 @@
           grid-gap: 10px; grid-column: 2; grid-row: 1;">
           <mat-form-field>
             <mat-label>Язык слов в фразе</mat-label>
-            <mat-select [(value)]="choosedLanguage.name">
+            <mat-select [(value)]="choosedLanguage_10.name">
               <mat-option *ngFor="let language of languages" [value]="language.name">{{language.viewName}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-raised-button (click)="generateSeed(choosedLanguage.name, 10)">Generate</button>
+          <button mat-raised-button (click)="generateSeed(choosedLanguage_10.name, 10)">Generate</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -38,11 +38,11 @@
           grid-gap: 10px; grid-column: 2; grid-row: 1;">
           <mat-form-field>
             <mat-label>Язык слов в фразе</mat-label>
-            <mat-select [(value)]="choosedLanguage.name">
+            <mat-select [(value)]="choosedLanguage_12.name">
               <mat-option *ngFor="let language of languages" [value]="language.name">{{language.viewName}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-raised-button (click)="generateSeed(choosedLanguage.name, 12)">Generate</button>
+          <button mat-raised-button (click)="generateSeed(choosedLanguage_12.name, 12)">Generate</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -61,11 +61,11 @@
           grid-gap: 10px; grid-column: 2; grid-row: 1;">
           <mat-form-field>
             <mat-label>Язык слов в фразе</mat-label>
-            <mat-select [(value)]="choosedLanguage.name">
+            <mat-select [(value)]="choosedLanguage_18.name">
               <mat-option *ngFor="let language of languages" [value]="language.name">{{language.viewName}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-raised-button (click)="generateSeed(choosedLanguage.name, 18)">Generate</button>
+          <button mat-raised-button (click)="generateSeed(choosedLanguage_18.name, 18)">Generate</button>
         </mat-card-actions>
       </mat-card>
     </div>

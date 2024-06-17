@@ -35,16 +35,12 @@ export class WalletGenerationComponent {
               private _walletAuthService: WalletAuthService) {
   }
 
-  ngOnInit() {
-  }
-
-
   generateWallet(){
     let encryptedPassword = this._crypto.encrypt(this.choosedPassword);
     let encryptedSeed = this._crypto.encrypt(this.seed);
     this._service.generateWallet(encryptedPassword, encryptedSeed).subscribe({next: (data) => {
         this.openSnackBar(data.info, "Ок");
-        if(data.stackTrace !== ""){
+        if(data.stackTrace !== null){
             const string = `Error - ${data.httpCode} - ${data.stackTrace}`;
             console.error(string);
             return;
@@ -78,7 +74,7 @@ export class WalletGenerationComponent {
     console.log(size);
     this._service.generateSeed(language, size).subscribe({next: (data) => {
         this.openSnackBar(data.info, "Ок");
-        if(data.stackTrace !== ""){
+        if(data.stackTrace !== null){
           const string = `Error - ${data.httpCode} - ${data.stackTrace}`;
           console.error(string);
           return;

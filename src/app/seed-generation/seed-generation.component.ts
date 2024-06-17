@@ -16,7 +16,9 @@ export class SeedGenerationComponent {
   seed_10: string = "";
   seed_12: string = "";
   seed_18: string = "";
-  choosedLanguage: SeedLanguage = new SeedLanguage();
+  choosedLanguage_10: SeedLanguage = new SeedLanguage();
+  choosedLanguage_12: SeedLanguage = new SeedLanguage();
+  choosedLanguage_18: SeedLanguage = new SeedLanguage();
   languages: SeedLanguage[] = [
     new SeedLanguage("english", "Английский"),
     new SeedLanguage("czech", "Чешский"),
